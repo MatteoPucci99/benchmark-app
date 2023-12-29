@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+/*font-family: 'Inter', sans-serif;*/
+/*font-family: 'Outfit', sans-serif;*/
+#mainContainer {
+  background: url(./assets/bg.jpg);
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#logo {
+  position: absolute;
+  top: 50px;
+  left: 80px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#proceedButton {
+  background-color: #00ffff;
+  border: none;
+  height: 60px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 1.2em;
+  box-shadow: 0px 0px 30px -4px #00ffff;
+  transition: box-shadow 0.35s ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#proceedButton:hover {
+  box-shadow: 0px 0px 30px 1px #00ffff;
 }
 
-.App-link {
-  color: #61dafb;
+h1,
+h2,
+h3 {
+  font-family: "Outfit", sans-serif !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p,
+span {
+  font-family: "Inter", sans-serif !important;
 }
