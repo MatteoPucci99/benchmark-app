@@ -27,6 +27,14 @@
   box-shadow: 0px 0px 30px 1px #00ffff;
 }
 
+#resultAlert {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
 h1,
 h2,
 h3 {

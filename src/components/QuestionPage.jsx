@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { setQuestionsAction, setScoreAction } from "../redux/actions"
+import { setQuestionsAction, setScoreAction, setTrackQuestionsActions } from "../redux/actions"
 import questions from "../dataQuestions"
 import { useNavigate } from "react-router-dom"
 
@@ -15,6 +15,8 @@ const QuestionPage = ()=>{
 
     const myQuestions = useSelector(state=>state.questions.content)
     const myScore = useSelector(state=>state.score.content)
+    const tracker = useSelector(state=>state.questionTracker.content)
+
     console.log(myQuestions)
     // Funzione per mescolare un array in modo casuale
     const shuffleArray = (array) => {
@@ -47,22 +49,25 @@ const QuestionPage = ()=>{
   console.log(questionsWithShuffledAnswers);
   const handleBenchmarkEnd = ()=>{
     if(questionsWithShuffledAnswers.length === 0){
-        navigate('/result')
+        navigate('/results')
     }
   }
 
   const handleNextQuestion = (index) => {
-    
+    const trackQuestion = tracker +1
+    dispatch(setTrackQuestionsActions(trackQuestion))
     const myAnswer = questionsWithShuffledAnswers[0].answers[index]
     console.log(myAnswer)
     if(myAnswer === questionsWithShuffledAnswers[0].correct_answer){
         console.log('Risposta giusta: ', myAnswer)
-        const newScore = myScore + 1
-        dispatch(setScoreAction(newScore))
+        const newScore = myScore + 1      
+        dispatch(setScoreAction(newScore))       
 
     } else { 
         console.log('Risposta sbagliata: ', myAnswer)
+        
     }
+  
     questionsWithShuffledAnswers.shift();
     dispatch(setQuestionsAction(questionsWithShuffledAnswers))
     handleBenchmarkEnd()
