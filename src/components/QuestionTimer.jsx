@@ -2,7 +2,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { useCountdown } from 'react-countdown-circle-timer'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeQuestionAction, setTrackQuestionsActions } from '../redux/actions'
-import { useEffect, useState } from 'react'
+
 
 const QuestionTimer = (props)=>{
 

@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row } from "react-bootstrap"
+import {  Col, Container, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import ResultChart from "./ResultChart"
 import { useNavigate } from "react-router-dom"

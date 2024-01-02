@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 
 const FeedbackPage = () => {
   const [selectedStars, setSelectedStars] = useState();
