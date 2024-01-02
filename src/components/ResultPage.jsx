@@ -1,6 +1,7 @@
-import { Col, Container, Row } from "react-bootstrap"
+import { Button, Col, Container, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import ResultChart from "./ResultChart"
+import { useNavigate } from "react-router-dom"
 
 
 const ResultPage = ()=>{
@@ -9,6 +10,7 @@ const ResultPage = ()=>{
     const totalQuestions = useSelector(state=>state.questionTracker.content)
     const correctAnswerRate = myResult / totalQuestions * 100
     const wrongAnswerRate = 100 - correctAnswerRate
+    const navigate = useNavigate()
     
     return (
         <Container className="h-100 d-flex justify-content-center align-items-center text-white">
@@ -39,8 +41,8 @@ const ResultPage = ()=>{
                         </Col>
                     </Row>
                 </Col>
-                <Col>
-                
+                <Col className="text-center mt-5">
+                    <button id="rateUs" onClick={()=>navigate('/feedback')}>RATE US</button>
                 </Col>
             </Row>
         </Container>
