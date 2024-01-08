@@ -37,7 +37,7 @@ const QuestionTimer = (props)=>{
             onComplete={() => {
                 dispatch(removeQuestionAction())
                 dispatch(setTrackQuestionsActions(tracker+1))
-                return { shouldRepeat: true} // repeat animation in 1.5 seconds
+                return { shouldRepeat: true} 
               }}
         >
             {({ remainingTime }) => (

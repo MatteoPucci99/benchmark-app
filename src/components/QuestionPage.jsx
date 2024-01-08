@@ -11,7 +11,7 @@ const QuestionPage = ()=>{
 
     const [timerUpdate , setTimerUpdate] = useState(0)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const navigate = useNavigate() 
 
 
     
@@ -45,7 +45,7 @@ const QuestionPage = ()=>{
         // Mescolo in maniera randomica le rispsote attraverso la funzione shuffleArray
         const shuffledAnswers = shuffleArray(allAnswers);
             
-        // Crea la nuova proprietà 'answers', in cui ci saranno tutte le risposte mescolate per ogni oggetto
+        // Creo la nuova proprietà 'answers', in cui ci saranno tutte le risposte mescolate per ogni oggetto
         const questionWithAnswers = {
         ...question,
         answers: shuffledAnswers,
