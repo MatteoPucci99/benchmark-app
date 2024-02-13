@@ -8,6 +8,7 @@ const WelcomePage = ()=>{
 const navigate = useNavigate()
 const [isChecked, setIsChkecked] = useState(false)
 const handleCheckInput = ()=> setIsChkecked(!isChecked)
+//Funzione per gestire accesso a pagina /questions
 const handleClickButton = ()=>{
     isChecked === true ? navigate('/questions') : alert('Conferma prima di procedere')
 }

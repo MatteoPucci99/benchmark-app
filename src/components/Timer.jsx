@@ -13,7 +13,7 @@ const Timer = (props)=>{
   const dispatch = useDispatch()
     useEffect(() => {
         setSeconds(60); 
-    
+        //Timer 
         const timerFunction = setInterval(() => {
           setSeconds((prevSeconds) => {
             if (prevSeconds === 0) {
