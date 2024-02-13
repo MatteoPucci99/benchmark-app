@@ -21,9 +21,6 @@ const QuestionTimer = (props)=>{
         strokeWidth,
       } = useCountdown({ isPlaying: true, duration: 7, colors: '#abc' })
 
-
-
-
     return (
     <div className='timer'>
         <CountdownCircleTimer

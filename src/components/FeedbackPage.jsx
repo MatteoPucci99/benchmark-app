@@ -6,11 +6,13 @@ import { FaStar } from "react-icons/fa";
 const FeedbackPage = () => {
   const [selectedStars, setSelectedStars] = useState();
 
-
+  //Funzione per gestire selezionamento delle stelle
+  //Nel map verrà passato l'indice della stella
   const handleStarClick = (selectedStar) => {
     setSelectedStars(selectedStar);
   };
 
+  //Array da mappare per generare dinamicamente le stelle
   const numOfStars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
@@ -27,6 +29,7 @@ const FeedbackPage = () => {
         </Col>
         <Col className="mt-4">
           {numOfStars.map((el, index) => {
+            //Tutte le stelle con indice <= selectedStars verranno colorate
             const starColor =
             index <= selectedStars ? "#00FFFF" : "#0b110b";
           
