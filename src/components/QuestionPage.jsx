@@ -8,25 +8,23 @@ import QuestionTimer from "./QuestionTimer"
 
 
 const QuestionPage = ()=>{
-
+    //Stato da passare come prop a QuestionTimer che utilizzera timerUpdate come key per aggiornare il timer ad ogni risposta data.
     const [timerUpdate , setTimerUpdate] = useState(0)
     const dispatch = useDispatch()
     const navigate = useNavigate() 
 
 
-    
+    //Recupero i dati dallo store
     useEffect(()=>{
         dispatch(setQuestionsAction(questions))
     },[])
-
-
     const total = 10
     const myQuestions = useSelector(state=>state.questions.content)
     const myScore = useSelector(state=>state.score.content)
     const tracker = useSelector(state=>state.questionTracker.content)
     
-    console.log(myQuestions)
-    // Funzione per mescolare un array in modo casuale
+   
+    // Funzione per mescolare un array in modo casuale: algoritmo di Fisher-Yates
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -42,7 +40,7 @@ const QuestionPage = ()=>{
         // Unisco in allAnswer tutte le risposte
         const allAnswers = [correct_answer, ...incorrect_answers];
             
-        // Mescolo in maniera randomica le rispsote attraverso la funzione shuffleArray
+        // Mescolo in maniera randomica le risposte attraverso la funzione shuffleArray
         const shuffledAnswers = shuffleArray(allAnswers);
             
         // Creo la nuova proprietà 'answers', in cui ci saranno tutte le risposte mescolate per ogni oggetto
@@ -55,29 +53,33 @@ const QuestionPage = ()=>{
     });
   
  
+  //Funzione per indirizzare la naigazione alla pagina result una volta che le domande sono finite
   const handleBenchmarkEnd = ()=>{
     if(questionsWithShuffledAnswers.length === 0 && tracker===10){
         navigate('/results')
     }
   }
 
+  //Funzione per gestire: track delle risposte, assegnazione punteggio in caso di risposta corretta.
   const handleNextQuestion = (index) => {
+    //Track numero rispote
     const trackQuestion = tracker +1
     dispatch(setTrackQuestionsActions(trackQuestion))
+    //Assegnazione punteggio in caso di risposta giusta
     const myAnswer = questionsWithShuffledAnswers[0].answers[index]
-  
-    if(myAnswer === questionsWithShuffledAnswers[0].correct_answer){
-     
+    if(myAnswer === questionsWithShuffledAnswers[0].correct_answer){     
         const newScore = myScore + 1      
         dispatch(setScoreAction(newScore))       
-
     } 
+    //Aggiorno il "timerCounter" ad ogni risposta data
     setTimerUpdate(timerUpdate +1)
+    //Elimino la domanda corrente dall'array
     questionsWithShuffledAnswers.shift();
     dispatch(setQuestionsAction(questionsWithShuffledAnswers))
     
 }
 
+//Controllo la variazione dell'array di domande per chiamare handleBenchMarkEnd al termine del quiz
 useEffect(()=>{
     handleBenchmarkEnd()
 },[questionsWithShuffledAnswers])
